@@ -1,1 +1,1 @@
-export * from './lib/timesheet-feature-timesheet.module';
+export * from './lib/feature-timesheet.module';

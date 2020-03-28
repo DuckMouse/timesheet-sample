@@ -13,8 +13,11 @@
     "target": "es2015",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@timesheet/timesheet/feature-timesheet": [
+      "@timesheet/feature-timesheet": [
         "libs/timesheet/feature-timesheet/src/index.ts"
+      ],
+      "@timesheet/data-access": [
+        "libs/timesheet/data-access/src/index.ts"
       ]
     },
     "rootDir": "."

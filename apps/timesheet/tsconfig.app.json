@@ -6,8 +6,6 @@
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": [
-    "src/**/*.d.ts",
-
-    "../../libs/timesheet/feature-timesheet/src/index.ts"
+    "src/**/*.d.ts"
   ]
 }

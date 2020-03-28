@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { TimesheetFeatureTimesheetModule } from './timesheet-feature-timesheet.module';
+import { FeatureTimesheetModule } from './feature-timesheet.module';
 
 describe('TimesheetFeatureTimesheetModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [TimesheetFeatureTimesheetModule]
+      imports: [FeatureTimesheetModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(TimesheetFeatureTimesheetModule).toBeDefined();
+    expect(FeatureTimesheetModule).toBeDefined();
   });
 });

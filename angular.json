@@ -130,7 +130,7 @@
         }
       }
     },
-    "timesheet-feature-timesheet": {
+    "feature-timesheet": {
       "projectType": "library",
       "root": "libs/timesheet/feature-timesheet",
       "sourceRoot": "libs/timesheet/feature-timesheet/src",
@@ -155,6 +155,37 @@
             "main": "libs/timesheet/feature-timesheet/src/test.ts",
             "tsConfig": "libs/timesheet/feature-timesheet/tsconfig.spec.json",
             "karmaConfig": "libs/timesheet/feature-timesheet/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "timesheet-data-access": {
+      "projectType": "library",
+      "root": "libs/timesheet/data-access",
+      "sourceRoot": "libs/timesheet/data-access/src",
+      "prefix": "timesheet",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/data-access/tsconfig.lib.json",
+              "libs/timesheet/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/timesheet/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/timesheet/data-access/src/test.ts",
+            "tsConfig": "libs/timesheet/data-access/tsconfig.spec.json",
+            "karmaConfig": "libs/timesheet/data-access/karma.conf.js"
           }
         }
       },

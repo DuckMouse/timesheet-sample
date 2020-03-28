@@ -14,7 +14,10 @@
     "timesheet-e2e": {
       "tags": []
     },
-    "timesheet-feature-timesheet": {
+    "timesheet-feature": {
+      "tags": []
+    },
+    "timesheet-data-access": {
       "tags": []
     }
   }
