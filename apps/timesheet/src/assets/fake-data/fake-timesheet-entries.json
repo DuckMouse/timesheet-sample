@@ -1,0 +1,50 @@
+[
+  {
+    "state": "Submitted",
+    "date": "",
+    "title": "Task 1",
+    "type": "Telephone Call",
+    "duration": {
+      "hours": 1,
+      "minutes": 5
+    },
+    "hourlyRate": "250.15",
+    "total": "250.05"
+  },
+  {
+    "state": "Submitted",
+    "date": "",
+    "title": "Task 2",
+    "type": "Research",
+    "duration": {
+      "hours": 3,
+      "minutes": 25
+    },
+    "hourlyRate": "100.15",
+    "total": "100.15"
+  },
+  {
+    "state": "Submitted",
+    "date": "",
+    "title": "Task 3",
+    "type": "Drafting Document",
+    "duration": {
+      "hours": 2,
+      "minutes": 37
+    },
+    "hourlyRate": "95.15",
+    "total": "95.15"
+  },
+  {
+    "state": "Submitted",
+    "date": "",
+    "title": "Task 4",
+    "type": "Drafting Document",
+    "duration": {
+      "hours": 2,
+      "minutes": 51
+    },
+    "hourlyRate": "95.15",
+    "total": "95.15"
+  }
+]
