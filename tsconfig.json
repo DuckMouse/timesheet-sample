@@ -19,7 +19,8 @@
         "libs/timesheet/feature-timesheet/src/index.ts"
       ],
       "@timesheet/data-access": ["libs/timesheet/data-access/src/index.ts"],
-      "@timesheet/models": ["libs/timesheet/models/index.ts"]
+      "@timesheet/models": ["libs/timesheet/models/index.ts"],
+      "@timesheet/ui": ["libs/timesheet/ui/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
