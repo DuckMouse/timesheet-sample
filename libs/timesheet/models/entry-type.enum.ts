@@ -1,5 +1,5 @@
-export interface EntryType {
-  telephoneCall: 'Telephone Call';
-  research: 'Research';
-  draftingDocument: 'Drafting Document';
+export enum EntryType {
+  telephoneCall = 'Telephone Call',
+  research = 'Research',
+  draftingDocument = 'Drafting Document'
 }

@@ -1,4 +1,4 @@
-export interface EntryState {
-  submitted: 'Submitted';
-  active: 'Active';
+export enum EntryState {
+  submitted = 'Submitted',
+  active = 'Active'
 }
