@@ -5,9 +5,7 @@ const routes: Routes = [
   {
     path: 'timesheet',
     loadChildren: () =>
-      import('@timesheet/feature-timesheet').then(
-        m => m.FeatureTimesheetModule
-      )
+      import('@timesheet/feature-timesheet').then(m => m.FeatureTimesheetModule)
   },
   {
     path: '',

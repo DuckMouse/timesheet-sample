@@ -11,6 +11,8 @@ export class TimesheetComponent implements OnInit {
   constructor(private readonly timeSheetShellService: TimesheetShellService) {}
 
   ngOnInit(): void {
-    this.timeSheetShellService.getHello();
+    this.timeSheetShellService
+      .fetchTimesheetEntries()
+      .subscribe(result => console.log(result));
   }
 }

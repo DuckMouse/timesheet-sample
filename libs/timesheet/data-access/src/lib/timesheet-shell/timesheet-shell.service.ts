@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { TimesheetEntry } from '@timesheet/models';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TimesheetShellService {
-  constructor() {}
+  constructor(private readonly httpClient: HttpClient) {}
 
-  getHello() {
-    console.log('gello');
+  fetchTimesheetEntries(): Observable<TimesheetEntry[]> {
+    return this.httpClient.get<TimesheetEntry[]>('./assets/fake-data/fake-timesheet-entries.json');
   }
 }

@@ -1,7 +1,7 @@
 [
   {
     "state": "Submitted",
-    "date": "",
+    "date": "23/03/2020",
     "title": "Task 1",
     "type": "Telephone Call",
     "duration": {
@@ -13,7 +13,7 @@
   },
   {
     "state": "Submitted",
-    "date": "",
+    "date": "24/03/2020",
     "title": "Task 2",
     "type": "Research",
     "duration": {
@@ -25,7 +25,7 @@
   },
   {
     "state": "Submitted",
-    "date": "",
+    "date": "24/03/2020",
     "title": "Task 3",
     "type": "Drafting Document",
     "duration": {
@@ -37,7 +37,7 @@
   },
   {
     "state": "Submitted",
-    "date": "",
+    "date": "23/03/2020",
     "title": "Task 4",
     "type": "Drafting Document",
     "duration": {
