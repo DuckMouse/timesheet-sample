@@ -27,9 +27,7 @@
               "apps/timesheet/src/favicon.ico",
               "apps/timesheet/src/assets"
             ],
-            "styles": [
-              "apps/timesheet/src/styles.scss"
-            ],
+            "styles": ["apps/timesheet/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -91,9 +89,7 @@
               "apps/timesheet/src/favicon.ico",
               "apps/timesheet/src/assets"
             ],
-            "styles": [
-              "apps/timesheet/src/styles.scss"
-            ],
+            "styles": ["apps/timesheet/src/styles.scss"],
             "scripts": []
           }
         },
@@ -104,9 +100,7 @@
               "apps/timesheet/tsconfig.app.json",
               "apps/timesheet/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -131,12 +125,45 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/timesheet-e2e/tsconfig.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
-    }},
+    },
+    "timesheet-feature-timesheet": {
+      "projectType": "library",
+      "root": "libs/timesheet/feature-timesheet",
+      "sourceRoot": "libs/timesheet/feature-timesheet/src",
+      "prefix": "timesheet",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/feature-timesheet/tsconfig.lib.json",
+              "libs/timesheet/feature-timesheet/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/timesheet/feature-timesheet/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/timesheet/feature-timesheet/src/test.ts",
+            "tsConfig": "libs/timesheet/feature-timesheet/tsconfig.spec.json",
+            "karmaConfig": "libs/timesheet/feature-timesheet/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
   "defaultProject": "timesheet"
 }

@@ -13,6 +13,9 @@
     },
     "timesheet-e2e": {
       "tags": []
+    },
+    "timesheet-feature-timesheet": {
+      "tags": []
     }
   }
 }
