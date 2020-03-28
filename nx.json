@@ -13,6 +13,12 @@
     },
     "timesheet-e2e": {
       "tags": []
+    },
+    "timesheet-feature": {
+      "tags": []
+    },
+    "timesheet-data-access": {
+      "tags": []
     }
   }
 }

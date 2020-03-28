@@ -11,11 +11,15 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {},
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@timesheet/feature-timesheet": [
+        "libs/timesheet/feature-timesheet/src/index.ts"
+      ],
+      "@timesheet/data-access": [
+        "libs/timesheet/data-access/src/index.ts"
+      ]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {
