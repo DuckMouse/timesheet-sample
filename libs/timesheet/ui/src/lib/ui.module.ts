@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 
 import { TimesheetTableComponent } from './timesheet-table/timesheet-table.component';
-import { TimeDurationComponent } from './time-duration/time-duration.component';
 import { DurationEditorComponent } from './duration-editor/duration-editor.component';
 import { EntryActionActiveComponent } from './entry-action-active/entry-action-active.component';
 import { EntryActionNewComponent } from './entry-action-new/entry-action-new.component';
@@ -25,19 +24,17 @@ import { YesnomodalComponent } from './yesnomodal/yesnomodal.component';
     MatDialogModule,
     AgGridModule.withComponents([
       DurationEditorComponent,
-      TimeDurationComponent,
       EntryActionActiveComponent,
       EntryActionNewComponent
     ])
   ],
   declarations: [
     TimesheetTableComponent,
-    TimeDurationComponent,
     DurationEditorComponent,
     EntryActionActiveComponent,
     EntryActionNewComponent,
     YesnomodalComponent
   ],
-  exports: [TimesheetTableComponent, TimeDurationComponent, YesnomodalComponent]
+  exports: [TimesheetTableComponent]
 })
 export class UiModule {}

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Time } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { ICellEditorAngularComp } from 'ag-grid-angular';
 
@@ -9,13 +8,9 @@ import { ICellEditorAngularComp } from 'ag-grid-angular';
   templateUrl: './duration-editor.component.html',
   styleUrls: ['./duration-editor.component.scss']
 })
-export class DurationEditorComponent implements OnInit, ICellEditorAngularComp {
+export class DurationEditorComponent implements ICellEditorAngularComp {
   hoursFormControl: FormControl;
   minutesFormControl: FormControl;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   agInit(params: any): void {
     this.hoursFormControl = new FormControl(params.value.hours);
@@ -24,8 +19,8 @@ export class DurationEditorComponent implements OnInit, ICellEditorAngularComp {
 
   getValue() {
     return {
-      hours: parseInt(this.hoursFormControl.value),
-      minutes: parseInt(this.minutesFormControl.value)
+      hours: parseInt(this.hoursFormControl.value, 10),
+      minutes: parseInt(this.minutesFormControl.value, 10)
     };
   }
 
@@ -33,7 +28,6 @@ export class DurationEditorComponent implements OnInit, ICellEditorAngularComp {
     if (!isNumeric(event)) {
       event.preventDefault();
     }
-
     function isNumeric(ev: any) {
       return /\d/.test(ev.key);
     }

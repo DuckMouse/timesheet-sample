@@ -15,14 +15,14 @@
       "@timesheet/data-access": [
         "libs/timesheet/data-access/src/index.ts"
       ],
-      "@timesheet/models": [
-        "libs/timesheet/models/index.ts"
-      ],
       "@timesheet/ui": [
         "libs/timesheet/ui/src/index.ts"
       ],
       "@timesheet/utilities": [
         "libs/timesheet/utilities/index.ts"
+      ],
+      "@data": [
+        "libs/data/src/index.ts"
       ]
     }
   },

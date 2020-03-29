@@ -1,16 +1,14 @@
 <div class="container">
   <div class="actions">
-    <button mat-stroked-button color="primary" (click)="addNewRow()">
+    <button mat-stroked-button (click)="addNewRow()">
       New Entry
     </button>
     <button mat-stroked-button color="primary" (click)="submitActiveEntries()">
       Submit
     </button>
+    <span>Default Hourly Rate is: {{defaultHourlyRate | currency}}</span>
   </div>
-  <ag-grid-angular style="width: 100%;" class="ag-theme-alpine" domLayout="autoHeight" [animateRows]="true"
-    [context]="context" [defaultColDef]="defaultColDef" [frameworkComponents]="frameworkComponents"
-    [suppressClickEdit]="true" [deltaRowDataMode]="true" [rowData]="timesheetEntries" [getRowNodeId]="getRowNodeId"
-    [suppressRowClickSelection]="true" rowSelection='multiple' editType="fullRow" [columnDefs]="columnDefs"
-    (gridReady)="onGridReady($event)">
+  <ag-grid-angular class="ag-theme-alpine" domLayout="autoHeight" [context]="context" [gridOptions]="gridOptions"
+    [rowData]="timesheetEntries" (gridReady)="onGridReady($event)">
   </ag-grid-angular>
 </div>

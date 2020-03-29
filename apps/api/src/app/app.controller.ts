@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 
+import { TimesheetEntry } from '@data';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,9 +11,8 @@ export class AppController {
   getEntries() {
     return this.appService.getEntries();
   }
-  @Post('AddEntries')
-  addEntries(@Body() entries: any[]) {
-    console.log(entries);
+  @Post('addentries')
+  addEntries(@Body() entries: TimesheetEntry[]) {
     return this.appService.addEntries(entries);
   }
 }
