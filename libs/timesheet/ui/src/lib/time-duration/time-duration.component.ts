@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Time } from '@angular/common';
 
 import { ICellRendererParams } from 'ag-grid-community';
@@ -9,10 +9,8 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
   templateUrl: './time-duration.component.html',
   styleUrls: ['./time-duration.component.scss']
 })
-export class TimeDurationComponent implements OnInit, ICellRendererAngularComp {
+export class TimeDurationComponent implements ICellRendererAngularComp {
   durationValue: Time;
-
-  constructor() {}
   agInit(params: ICellRendererParams): void {
     this.durationValue = params.value;
   }
@@ -20,6 +18,4 @@ export class TimeDurationComponent implements OnInit, ICellRendererAngularComp {
     this.durationValue = params.value;
     return true;
   }
-
-  ngOnInit(): void {}
 }
