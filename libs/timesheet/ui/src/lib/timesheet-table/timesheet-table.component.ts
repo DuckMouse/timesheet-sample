@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { GridApi, RowNode } from 'ag-grid-community';
 import { format } from 'date-fns';
@@ -18,6 +18,7 @@ import { DurationEditorComponent } from '../duration-editor/duration-editor.comp
 import { TimeDurationComponent } from '../time-duration/time-duration.component';
 import { EntryActionActiveComponent } from './../entry-action-active/entry-action-active.component';
 import { EntryActionNewComponent } from './../entry-action-new/entry-action-new.component';
+import { YesnomodalComponent } from '../yesnomodal/yesnomodal.component';
 
 @Component({
   selector: 'timesheet-timesheet-table',
@@ -154,9 +155,15 @@ export class TimesheetTableComponent implements OnInit {
         break;
       }
       case EntryAction.delete: {
-        this.gridApi.updateRowData({
-          remove: [{ ...node.data }]
-        });
+        this.openDialog(node)
+          .afterClosed()
+          .subscribe(result => {
+            if (result) {
+              this.gridApi.updateRowData({
+                remove: [{ ...node.data }]
+              });
+            }
+          });
         break;
       }
     }
@@ -175,7 +182,12 @@ export class TimesheetTableComponent implements OnInit {
     }
   }
 
-  private openDialog(): void{}
+  private openDialog(node: RowNode): MatDialogRef<YesnomodalComponent, string> {
+    return this.dialog.open(YesnomodalComponent, {
+      width: '250px',
+      data: node.data
+    });
+  }
 
   private createNewEmptyRow(): TimesheetEntry {
     return {
