@@ -1,4 +1,5 @@
 export enum EntryState {
   submitted = 'Submitted',
-  active = 'Active'
+  active = 'Active',
+  new = ''
 }

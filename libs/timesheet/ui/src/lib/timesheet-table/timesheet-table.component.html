@@ -5,7 +5,8 @@
     </button>
   </div>
   <ag-grid-angular style="width: 100%;" class="ag-theme-alpine" domLayout="autoHeight" [animateRows]="true"
-    [defaultColDef]="defaultColDef" [frameworkComponents]="frameworkComponents" [rowData]="timesheetEntries"
-    editType="fullRow" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)">
+    [context]="context" [defaultColDef]="defaultColDef" [frameworkComponents]="frameworkComponents" [suppressClickEdit]="true"
+    [deltaRowDataMode]="true" [rowData]="timesheetEntries" [getRowNodeId]="getRowNodeId" editType="fullRow"
+    [columnDefs]="columnDefs" (gridReady)="onGridReady($event)">
   </ag-grid-angular>
 </div>
