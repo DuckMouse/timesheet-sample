@@ -19,6 +19,9 @@
     },
     "timesheet-data-access": {
       "tags": []
+    },
+    "timesheet-ui": {
+      "tags": []
     }
   }
 }

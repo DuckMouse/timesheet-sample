@@ -29,6 +29,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.0",
+    "@angular/cdk": "^9.2.0",
     "@angular/common": "~9.1.0",
     "@angular/compiler": "~9.1.0",
     "@angular/core": "~9.1.0",
@@ -40,6 +41,7 @@
     "@nrwl/workspace": "^9.1.4",
     "ag-grid-angular": "^23.0.2",
     "ag-grid-community": "^23.0.2",
+    "date-fns": "^2.11.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
