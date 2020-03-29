@@ -10,7 +10,8 @@ import { TimesheetTableComponent } from './timesheet-table/timesheet-table.compo
 import { TimeDurationComponent } from './time-duration/time-duration.component';
 import { DurationEditorComponent } from './duration-editor/duration-editor.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EntryActionComponent } from './entry-action/entry-action.component';
+import { EntryActionActiveComponent } from './entry-action-active/entry-action-active.component';
+import { EntryActionNewComponent } from './entry-action-new/entry-action-new.component';
 
 @NgModule({
   imports: [
@@ -22,14 +23,16 @@ import { EntryActionComponent } from './entry-action/entry-action.component';
     AgGridModule.withComponents([
       DurationEditorComponent,
       TimeDurationComponent,
-      EntryActionComponent
+      EntryActionActiveComponent,
+      EntryActionNewComponent
     ])
   ],
   declarations: [
     TimesheetTableComponent,
     TimeDurationComponent,
     DurationEditorComponent,
-    EntryActionComponent
+    EntryActionActiveComponent,
+    EntryActionNewComponent
   ],
   exports: [TimesheetTableComponent, TimeDurationComponent]
 })

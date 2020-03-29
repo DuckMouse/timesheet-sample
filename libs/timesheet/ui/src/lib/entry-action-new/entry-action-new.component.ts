@@ -1,33 +1,26 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 import { EntryAction } from '@timesheet/models';
-import { mapAction } from '@timesheet/utilities';
 
 @Component({
-  selector: 'timesheet-entry-action',
-  templateUrl: './entry-action.component.html',
-  styleUrls: ['./entry-action.component.scss']
+  selector: 'timesheet-entry-action-new',
+  templateUrl: './entry-action-new.component.html',
+  styleUrls: ['./entry-action-new.component.scss']
 })
-export class EntryActionComponent implements OnInit, ICellRendererAngularComp {
+export class EntryActionNewComponent
+  implements OnInit, ICellRendererAngularComp {
   params: any;
   parentContext: any;
-  actions: EntryAction[] = [];
-
+  entryActions = EntryAction;
   constructor() {}
-
   refresh(params: any): boolean {
-    this.params = this.params;
-    this.actions = [];
-    this.actions.push(...mapAction(params.data.state));
     return true;
   }
-
   agInit(params: ICellRendererParams): void {
     this.params = params;
     this.parentContext = params.context.componentParent;
-    this.actions.push(...mapAction(params.data.state));
   }
 
   ngOnInit(): void {}
@@ -35,5 +28,4 @@ export class EntryActionComponent implements OnInit, ICellRendererAngularComp {
   executeAction(action: EntryAction) {
     this.parentContext.executeAction(action, this.params.node);
   }
-
 }

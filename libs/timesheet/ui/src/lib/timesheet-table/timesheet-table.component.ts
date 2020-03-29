@@ -1,3 +1,5 @@
+import { EntryActionActiveComponent } from './../entry-action-active/entry-action-active.component';
+import { EntryActionNewComponent } from './../entry-action-new/entry-action-new.component';
 import { calculateTotal, mapAction } from '@timesheet/utilities';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -15,7 +17,6 @@ import { environment } from '@env/environment';
 
 import { DurationEditorComponent } from '../duration-editor/duration-editor.component';
 import { TimeDurationComponent } from '../time-duration/time-duration.component';
-import { EntryActionComponent } from '../entry-action/entry-action.component';
 
 @Component({
   selector: 'timesheet-timesheet-table',
@@ -29,7 +30,8 @@ export class TimesheetTableComponent implements OnInit {
   frameworkComponents = {
     timeDurationComponent: TimeDurationComponent,
     durationEditorComponent: DurationEditorComponent,
-    entryActionComponent: EntryActionComponent
+    entryActionNewComponent: EntryActionNewComponent,
+    entryActionActiveComponent: EntryActionActiveComponent
   };
 
   defaultColDef = {
@@ -45,7 +47,15 @@ export class TimesheetTableComponent implements OnInit {
     { headerName: 'Title', field: 'title' },
     {
       headerName: 'Type',
-      field: 'type'
+      field: 'type',
+      cellEditor: 'agSelectCellEditor',
+      cellEditorParams: {
+        values: [
+          EntryType.draftingDocument,
+          EntryType.research,
+          EntryType.telephoneCall
+        ]
+      }
     },
     {
       headerName: 'Duration (hh:mm)',
@@ -66,8 +76,18 @@ export class TimesheetTableComponent implements OnInit {
       headerName: 'Actions',
       field: 'actions',
       editable: false,
-      valueGetter: (params: any) => params.data.state,
-      cellRenderer: 'entryActionComponent'
+      cellRendererSelector: (params: any) => {
+        switch (params.data.state) {
+          case EntryState.active: {
+            return { component: 'entryActionActiveComponent' };
+          }
+          case EntryState.new: {
+            return { component: 'entryActionNewComponent' };
+          }
+          default:
+            null;
+        }
+      }
     }
   ];
   getRowNodeId = (data: any) => {
@@ -94,42 +114,39 @@ export class TimesheetTableComponent implements OnInit {
     switch (entryAction) {
       case EntryAction.save: {
         this.gridApi.updateRowData({
-          update: [
-            {
-              ...node.data,
-              state: EntryState.active
-            }
-          ]
+          update: [{ ...node.data, state: EntryState.active }]
         });
         this.gridApi.stopEditing();
+        this.gridApi.redrawRows({ rowNodes: [node] });
         break;
       }
       case EntryAction.edit: {
-        this.gridApi.updateRowData({
-          update: [
-            {
-              ...node.data,
-              actions: [EntryAction.save, EntryAction.cancel]
-            }
-          ]
-        });
         this.gridApi.startEditingCell({
           rowIndex: node.rowIndex,
           colKey: 'title'
         });
-
         break;
       }
       case EntryAction.cancel: {
-        if (node.data.state === EntryState.new) {
-          this.gridApi.removeItems([node]);
-        } else {
-          this.gridApi.stopEditing();
+        switch (node.data.state) {
+          case EntryState.active: {
+            this.gridApi.undoCellEditing();
+            this.gridApi.stopEditing();
+            break;
+          }
+          default: {
+            this.gridApi.updateRowData({
+              remove: [{ ...node.data }]
+            });
+            break;
+          }
         }
         break;
       }
       case EntryAction.delete: {
-        this.gridApi.removeItems([node]);
+        this.gridApi.updateRowData({
+          remove: [{ ...node.data }]
+        });
         break;
       }
     }

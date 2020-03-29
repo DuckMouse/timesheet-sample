@@ -1,0 +1,8 @@
+<ng-container *ngIf="edittingFlag">
+  <button mat-raised-button (click)="executeAction(entryActions.save)">Save</button>
+  <button mat-raised-button (click)="executeAction(entryActions.cancel)">Cancel</button>
+</ng-container>
+<ng-container *ngIf="!edittingFlag">
+  <button mat-raised-button (click)="executeAction(entryActions.edit)">Edit</button>
+  <button mat-raised-button (click)="executeAction(entryActions.delete)">Delete</button>
+</ng-container>
