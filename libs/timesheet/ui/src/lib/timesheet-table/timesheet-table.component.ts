@@ -48,10 +48,8 @@ export class TimesheetTableComponent implements OnInit {
     {
       headerName: 'Total',
       colId: 'total',
-      valueGetter: (params: any) => {
-        console.log(params);
-        return calculateTotal(params.data.duration, params.data.hourlyRate);
-      },
+      valueGetter: (params: any) =>
+        calculateTotal(params.data.duration, params.data.hourlyRate),
       editable: false
     },
     ,

@@ -1,2 +1,4 @@
-<input [formControl]="hoursFormControl" (keypress)="onKeyPress($event)"/>
-<input [formControl]="minutesFormControl" (keypress)="onKeyPress($event)" />
+<div class="ag-cell-edit-wrapper">
+  <input class="ag-input-field-input ag-text-field-input" [formControl]="hoursFormControl" (keypress)="onKeyPress($event)" /> <span> : </span>
+  <input class="ag-input-field-input ag-text-field-input" [formControl]="minutesFormControl" (keypress)="onKeyPress($event)" />
+</div>
