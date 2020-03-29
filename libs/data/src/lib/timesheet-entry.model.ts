@@ -2,7 +2,6 @@ import { Time } from '@angular/common';
 
 import { EntryState } from './entry-state.enum';
 import { EntryType } from './entry-type.enum';
-import { EntryAction } from './entry-action.enum';
 
 export interface TimesheetEntry {
   id: string;
@@ -12,5 +11,5 @@ export interface TimesheetEntry {
   type: EntryType;
   duration: Time;
   hourlyRate: number;
-  total: number;
+  total?: number;
 }

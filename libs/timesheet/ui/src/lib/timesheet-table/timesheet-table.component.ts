@@ -4,12 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { GridApi, RowNode } from 'ag-grid-community';
 import { uuid } from 'uuidv4';
 
-import {
-  TimesheetEntry,
-  EntryType,
-  EntryState,
-  EntryAction
-} from '@timesheet/models';
+import { TimesheetEntry, EntryType, EntryState, EntryAction } from '@data';
 import { calculateTotal } from '@timesheet/utilities';
 import { environment } from '@env/environment';
 

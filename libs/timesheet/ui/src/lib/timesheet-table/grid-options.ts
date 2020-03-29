@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 
-import { EntryState, EntryType } from '@timesheet/models';
+import { EntryState, EntryType } from '@data';
 import { calculateTotal } from '@timesheet/utilities';
 
 import { DurationEditorComponent } from '../duration-editor/duration-editor.component';
@@ -43,7 +43,7 @@ const columnDefs = [
   {
     headerName: 'Hourly Rate',
     field: 'hourlyRate',
-    cellRenderer: (params: any) => '$' + parseInt(params.value, 10).toFixed(2)
+    cellRenderer: (params: any) => '$' + params.value.toFixed(2)
   },
   {
     headerName: 'Total',

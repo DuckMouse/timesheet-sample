@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { TimesheetEntry, EntryState } from '@timesheet/models';
+import { TimesheetEntry, EntryState } from '@data';
 import { calculateTotal } from '@timesheet/utilities';
 
 @Injectable({

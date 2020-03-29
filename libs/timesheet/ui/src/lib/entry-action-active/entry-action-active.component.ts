@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
-import { EntryAction } from '@timesheet/models';
+import { EntryAction } from '@data';
 
 @Component({
   selector: 'timesheet-entry-action-active',

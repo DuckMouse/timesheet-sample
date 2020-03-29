@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { filter } from 'rxjs/operators';
-
 import { TimesheetShellService } from '@timesheet/data-access';
-import { TimesheetEntry } from '@timesheet/models';
+
+import { TimesheetEntry } from '@data';
 
 @Component({
   selector: 'timesheet-timesheet',
