@@ -2,6 +2,7 @@ import { Time } from '@angular/common';
 
 export function calculateTotal(duration: Time, hourlyRate: number) {
   const roundedMinutes = Math.ceil(duration.minutes / 15) * 15;
+  //redo this calculation
   const roundedDuration =
     roundedMinutes === 60
       ? { hours: duration.hours + 1, minutes: 0 }
