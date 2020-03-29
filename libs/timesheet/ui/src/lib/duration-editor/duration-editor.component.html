@@ -1,4 +1,2 @@
-<input #i [value]="params.value.hours" (keypress)="onKeyPress($event)" (keydown)="onKeyDown($event)"/>
-<input  [value]="params.value.minutes" (keypress)="onKeyPress($event)" (keydown)="onKeyDown($event)"/>
-
-
+<input [formControl]="hoursFormControl" (keypress)="onKeyPress($event)"/>
+<input [formControl]="minutesFormControl" (keypress)="onKeyPress($event)" />

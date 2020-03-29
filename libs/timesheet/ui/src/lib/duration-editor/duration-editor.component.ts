@@ -1,32 +1,32 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Time } from '@angular/common';
+
+import { ICellEditorAngularComp } from 'ag-grid-angular';
 
 @Component({
   selector: 'timesheet-duration-editor',
   templateUrl: './duration-editor.component.html',
   styleUrls: ['./duration-editor.component.scss']
 })
-export class DurationEditorComponent implements OnInit, AfterViewInit {
-  params: any;
-  durationValue: Time;
-  @ViewChild('i') textInput: any;
+export class DurationEditorComponent implements OnInit, ICellEditorAngularComp {
+  hoursFormControl: FormControl;
+  minutesFormControl: FormControl;
 
   constructor() {}
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.textInput.nativeElement.focus();
-    });
-  }
   ngOnInit(): void {}
 
   agInit(params: any): void {
-    this.params = params;
-    this.durationValue = params.value;
+    this.hoursFormControl = new FormControl(params.value.hours);
+    this.minutesFormControl = new FormControl(params.value.minutes);
   }
 
   getValue() {
-    return this.textInput.nativeElement.value;
+    return {
+      hours: parseInt(this.hoursFormControl.value),
+      minutes: parseInt(this.minutesFormControl.value)
+    };
   }
 
   onKeyPress(event: any) {
@@ -36,12 +36,6 @@ export class DurationEditorComponent implements OnInit, AfterViewInit {
 
     function isNumeric(ev: any) {
       return /\d/.test(ev.key);
-    }
-  }
-
-  onKeyDown(event: any) {
-    if (event.keyCode === 39 || event.keyCode === 37) {
-      event.stopPropagation();
     }
   }
 }
