@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 
 import { TimesheetEntry, EntryState } from '@timesheet/models';
 import { calculateTotal } from '@timesheet/utilities';
@@ -11,7 +11,7 @@ import { calculateTotal } from '@timesheet/utilities';
   providedIn: 'root'
 })
 export class TimesheetShellService {
-  private timeSheetEntriesSubject = new BehaviorSubject<TimesheetEntry[]>(null);
+  private timeSheetEntriesSubject = new BehaviorSubject<TimesheetEntry[]>([]);
   timeSheetEntries$ = this.timeSheetEntriesSubject.asObservable();
 
   constructor(private readonly httpClient: HttpClient) {}
@@ -20,6 +20,7 @@ export class TimesheetShellService {
     this.httpClient
       .get<TimesheetEntry[]>('/api/entries')
       .pipe(
+        startWith(this.timeSheetEntriesSubject.value),
         map((entries: TimesheetEntry[]) => {
           return entries.map(entry => ({
             ...entry,
