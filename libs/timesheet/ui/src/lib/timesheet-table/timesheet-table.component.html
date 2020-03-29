@@ -1,12 +1,11 @@
 <div class="container">
-  <div>
+  <div class="actions">
+    <button mat-stroked-button color="primary" (click)="addNewRow()">
+      New Entry
+    </button>
   </div>
-  <ag-grid-angular
-    style="width: 100%;"
-    class="ag-theme-alpine"
-    domLayout="autoHeight"
-    [rowData]="timesheetEntries"
-    [columnDefs]="columnDefs"
-  >
+  <ag-grid-angular style="width: 100%;" class="ag-theme-alpine" domLayout="autoHeight" [animateRows]="true"
+    [defaultColDef]="defaultColDef" [frameworkComponents]="frameworkComponents" [rowData]="timesheetEntries"
+    editType="fullRow" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)">
   </ag-grid-angular>
 </div>

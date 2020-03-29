@@ -9,8 +9,8 @@ import { TimesheetEntry } from '@timesheet/models';
   styleUrls: ['./timesheet.component.scss']
 })
 export class TimesheetComponent implements OnInit {
-  tempDataVar: TimesheetEntry[];
-  timeSheetEntries$ = this.timeSheetShellService.fetchTimesheetEntries();
+  // tempDataVar: TimesheetEntry[];
+  // timeSheetEntries$ = this.timeSheetShellService.fetchTimesheetEntries();
 
   constructor(private readonly timeSheetShellService: TimesheetShellService) {}
 

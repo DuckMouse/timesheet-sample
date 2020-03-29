@@ -15,12 +15,14 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
+      "@env/*": ["apps/timesheet/src/environments/*"],
       "@timesheet/feature-timesheet": [
         "libs/timesheet/feature-timesheet/src/index.ts"
       ],
       "@timesheet/data-access": ["libs/timesheet/data-access/src/index.ts"],
       "@timesheet/models": ["libs/timesheet/models/index.ts"],
-      "@timesheet/ui": ["libs/timesheet/ui/src/index.ts"]
+      "@timesheet/ui": ["libs/timesheet/ui/src/index.ts"],
+      "@timesheet/utilities": ["libs/timesheet/utilities/index.ts"]
     }
   },
   "angularCompilerOptions": {

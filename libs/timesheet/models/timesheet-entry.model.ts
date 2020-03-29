@@ -6,7 +6,7 @@ import { EntryAction } from './entry-action.enum';
 
 export interface TimesheetEntry {
   state: EntryState;
-  date: Date;
+  date: string;
   title: string;
   type: EntryType;
   duration: Time;
