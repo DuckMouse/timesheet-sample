@@ -7,11 +7,10 @@ import { EntryAction } from './entry-action.enum';
 export interface TimesheetEntry {
   id: string;
   state: EntryState;
-  date: string;
+  date: Date;
   title: string;
   type: EntryType;
   duration: Time;
   hourlyRate: number;
   total: number;
-  actions?: EntryAction[];
 }

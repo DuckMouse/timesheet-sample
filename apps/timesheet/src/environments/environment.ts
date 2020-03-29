@@ -1,5 +1,5 @@
 export const environment = {
-  defulatHourlyRate: 250.5,
+  defaultHourlyRate: 250.50,
   defaultDuration: { hours: 1, minutes: 0 },
   production: false
 };

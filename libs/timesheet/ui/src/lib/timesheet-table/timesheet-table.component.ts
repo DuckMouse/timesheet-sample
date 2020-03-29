@@ -1,7 +1,12 @@
-import { EntryActionActiveComponent } from './../entry-action-active/entry-action-active.component';
-import { EntryActionNewComponent } from './../entry-action-new/entry-action-new.component';
-import { calculateTotal, mapAction } from '@timesheet/utilities';
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 
 import { GridApi, RowNode } from 'ag-grid-community';
 import { format } from 'date-fns';
@@ -13,27 +18,28 @@ import {
   EntryState,
   EntryAction
 } from '@timesheet/models';
+import { calculateTotal } from '@timesheet/utilities';
 import { environment } from '@env/environment';
 
 import { DurationEditorComponent } from '../duration-editor/duration-editor.component';
 import { TimeDurationComponent } from '../time-duration/time-duration.component';
-import { EntryDateComponent } from '../entry-date/entry-date.component';
+import { EntryActionActiveComponent } from './../entry-action-active/entry-action-active.component';
+import { EntryActionNewComponent } from './../entry-action-new/entry-action-new.component';
 
 @Component({
   selector: 'timesheet-timesheet-table',
   templateUrl: './timesheet-table.component.html',
   styleUrls: ['./timesheet-table.component.scss']
 })
-export class TimesheetTableComponent implements OnInit {
+export class TimesheetTableComponent implements OnInit, OnChanges {
   @Input() timesheetEntries: TimesheetEntry[] = [];
-
+  @Output() submitSelectedActiveEntries = new EventEmitter<TimesheetEntry[]>();
   context: any;
   frameworkComponents = {
     timeDurationComponent: TimeDurationComponent,
     durationEditorComponent: DurationEditorComponent,
     entryActionNewComponent: EntryActionNewComponent,
-    entryActionActiveComponent: EntryActionActiveComponent,
-    entryDateComponent: EntryDateComponent
+    entryActionActiveComponent: EntryActionActiveComponent
   };
 
   defaultColDef = {
@@ -41,11 +47,19 @@ export class TimesheetTableComponent implements OnInit {
   };
 
   columnDefs = [
-    { headerName: 'State', field: 'state', editable: false },
+    {
+      headerName: 'State',
+      field: 'state',
+      editable: false,
+      checkboxSelection: (params: any) =>
+        params.data.state === EntryState.active ? true : false
+    },
     {
       headerName: 'Date',
       field: 'date',
-      cellEditor: 'entryDateComponent'
+      cellRenderer: (params: any) =>
+        format(new Date(params.value), 'dd/LL/yyyy'),
+      editable: false
     },
     { headerName: 'Title', field: 'title' },
     {
@@ -66,12 +80,16 @@ export class TimesheetTableComponent implements OnInit {
       cellEditor: 'durationEditorComponent',
       field: 'duration'
     },
-    { headerName: 'Hourly Rate', field: 'hourlyRate' },
+    {
+      headerName: 'Hourly Rate',
+      field: 'hourlyRate'
+    },
     {
       headerName: 'Total',
       colId: 'total',
       valueGetter: (params: any) =>
         calculateTotal(params.data.duration, params.data.hourlyRate),
+      valueFormatter: (params: any) => '$ ' + params.value.toFixed(2),
       editable: false
     },
     ,
@@ -98,19 +116,22 @@ export class TimesheetTableComponent implements OnInit {
   };
 
   private gridApi: GridApi;
-  private gridColumnApi: any;
 
   constructor() {
     this.context = {
       componentParent: this
     };
   }
+  ngOnChanges(changes: SimpleChanges): void {
+
+
+    console.log(changes);
+  }
 
   ngOnInit(): void {}
 
   onGridReady(params: any) {
     this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
   }
 
   executeAction(entryAction: EntryAction, node: RowNode) {
@@ -161,18 +182,25 @@ export class TimesheetTableComponent implements OnInit {
     this.gridApi.startEditingCell({ rowIndex: 0, colKey: 'title' });
   }
 
+  submitActiveEntries() {
+    const activeEntries = this.gridApi.getSelectedRows();
+    if (activeEntries.length > 0) {
+      this.submitSelectedActiveEntries.emit(activeEntries);
+    }
+  }
+
   private createNewEmptyRow(): TimesheetEntry {
     return {
       id: uuid(),
       state: EntryState.new,
-      date: format(new Date(), 'dd/MM/yyyy'),
+      date: new Date(),
       title: 'Task Title',
       type: EntryType.draftingDocument,
       duration: environment.defaultDuration,
-      hourlyRate: environment.defulatHourlyRate,
+      hourlyRate: environment.defaultHourlyRate,
       total: calculateTotal(
         environment.defaultDuration,
-        environment.defulatHourlyRate
+        environment.defaultHourlyRate
       )
     };
   }

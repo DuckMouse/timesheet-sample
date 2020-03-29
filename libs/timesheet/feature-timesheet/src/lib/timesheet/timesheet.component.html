@@ -1,1 +1,2 @@
-<timesheet-timesheet-table [timesheetEntries]="timeSheetEntries$ | async"></timesheet-timesheet-table>
+<timesheet-timesheet-table [timesheetEntries]="timeSheetEntries$ | async"
+  (submitSelectedActiveEntries)="submitSelectedActiveEntries($event)"></timesheet-timesheet-table>

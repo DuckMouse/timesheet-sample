@@ -1,6 +1,9 @@
 .container {
   padding: 1em;
-  .actions{
-    padding-bottom: 1em;
+  .actions {
+    padding: 1em 0;
+    button {
+      margin: 0 0.5em;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TimesheetShellService } from '@timesheet/data-access';
 import { TimesheetEntry } from '@timesheet/models';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'timesheet-timesheet',
@@ -9,9 +10,17 @@ import { TimesheetEntry } from '@timesheet/models';
   styleUrls: ['./timesheet.component.scss']
 })
 export class TimesheetComponent implements OnInit {
-  timeSheetEntries$ = this.timeSheetShellService.fetchTimesheetEntries();
+  timeSheetEntries$ = this.timeSheetShellService.timeSheetEntries$.pipe(
+    filter(entries => !!entries)
+  );
 
   constructor(private readonly timeSheetShellService: TimesheetShellService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.timeSheetShellService.fetchTimesheetEntries();
+  }
+
+  submitSelectedActiveEntries(timesheetEntries: TimesheetEntry[]) {
+    this.timeSheetShellService.addNewEntries(timesheetEntries).subscribe();
+  }
 }
