@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { TimesheetEntry, EntryState } from '@timesheet/models';
@@ -32,12 +32,11 @@ export class TimesheetShellService {
   }
 
   addNewEntries(entries: TimesheetEntry[]): void {
-    const newEntries = entries.map(entry => ({
-      ...entry,
-      state: EntryState.submitted
-    }));
     this.httpClient
-      .post('/api/AddEntries', newEntries)
+      .post('/api/AddEntries', entries.map(entry => ({
+        ...entry,
+        state: EntryState.submitted
+      })))
       .subscribe(() => this.fetchTimesheetEntries());
   }
 }

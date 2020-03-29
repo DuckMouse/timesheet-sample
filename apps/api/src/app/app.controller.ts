@@ -10,9 +10,8 @@ export class AppController {
   getEntries() {
     return this.appService.getEntries();
   }
-  @Post('AddEntries')
+  @Post('addentries')
   addEntries(@Body() entries: any[]) {
-    console.log(entries);
     return this.appService.addEntries(entries);
   }
 }
