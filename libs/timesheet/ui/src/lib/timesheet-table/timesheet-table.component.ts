@@ -17,6 +17,7 @@ import { environment } from '@env/environment';
 
 import { DurationEditorComponent } from '../duration-editor/duration-editor.component';
 import { TimeDurationComponent } from '../time-duration/time-duration.component';
+import { EntryDateComponent } from '../entry-date/entry-date.component';
 
 @Component({
   selector: 'timesheet-timesheet-table',
@@ -31,7 +32,8 @@ export class TimesheetTableComponent implements OnInit {
     timeDurationComponent: TimeDurationComponent,
     durationEditorComponent: DurationEditorComponent,
     entryActionNewComponent: EntryActionNewComponent,
-    entryActionActiveComponent: EntryActionActiveComponent
+    entryActionActiveComponent: EntryActionActiveComponent,
+    entryDateComponent: EntryDateComponent
   };
 
   defaultColDef = {
@@ -42,7 +44,8 @@ export class TimesheetTableComponent implements OnInit {
     { headerName: 'State', field: 'state', editable: false },
     {
       headerName: 'Date',
-      field: 'date'
+      field: 'date',
+      cellEditor: 'entryDateComponent'
     },
     { headerName: 'Title', field: 'title' },
     {
