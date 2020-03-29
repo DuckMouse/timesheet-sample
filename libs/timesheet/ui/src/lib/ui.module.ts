@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AgGridModule } from 'ag-grid-angular';
 
@@ -20,6 +21,7 @@ import { EntryActionNewComponent } from './entry-action-new/entry-action-new.com
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatDialogModule,
     AgGridModule.withComponents([
       DurationEditorComponent,
       TimeDurationComponent,

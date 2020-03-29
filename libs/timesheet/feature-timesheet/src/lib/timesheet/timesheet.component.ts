@@ -21,6 +21,6 @@ export class TimesheetComponent implements OnInit {
   }
 
   submitSelectedActiveEntries(timesheetEntries: TimesheetEntry[]) {
-    this.timeSheetShellService.addNewEntries(timesheetEntries).subscribe();
+    this.timeSheetShellService.addNewEntries(timesheetEntries);
   }
 }

@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "api": "ng serve api",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
@@ -38,10 +39,14 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
+    "@nestjs/common": "^6.8.3",
+    "@nestjs/core": "^6.8.3",
+    "@nestjs/platform-express": "^6.8.3",
     "@nrwl/workspace": "^9.1.4",
     "ag-grid-angular": "^23.0.2",
     "ag-grid-community": "^23.0.2",
     "date-fns": "^2.11.1",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "uuidv4": "^6.0.6",
@@ -69,6 +74,14 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "@nrwl/jest": "9.1.4",
+    "jest": "24.9.0",
+    "@types/jest": "24.9.1",
+    "ts-jest": "24.0.0",
+    "@nrwl/node": "9.1.4",
+    "@nestjs/schematics": "^6.7.0",
+    "@nestjs/testing": "^6.8.3",
+    "@nrwl/nest": "9.1.4"
   }
 }

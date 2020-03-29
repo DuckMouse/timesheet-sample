@@ -1,12 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges,
-  SimpleChanges
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { GridApi, RowNode } from 'ag-grid-community';
 import { format } from 'date-fns';
@@ -31,9 +24,11 @@ import { EntryActionNewComponent } from './../entry-action-new/entry-action-new.
   templateUrl: './timesheet-table.component.html',
   styleUrls: ['./timesheet-table.component.scss']
 })
-export class TimesheetTableComponent implements OnInit, OnChanges {
+export class TimesheetTableComponent implements OnInit {
   @Input() timesheetEntries: TimesheetEntry[] = [];
   @Output() submitSelectedActiveEntries = new EventEmitter<TimesheetEntry[]>();
+
+  private gridApi: GridApi;
   context: any;
   frameworkComponents = {
     timeDurationComponent: TimeDurationComponent,
@@ -106,26 +101,17 @@ export class TimesheetTableComponent implements OnInit, OnChanges {
             return { component: 'entryActionNewComponent' };
           }
           default:
-            null;
+            return '';
         }
       }
     }
   ];
-  getRowNodeId = (data: any) => {
-    return data.id;
-  };
+  getRowNodeId = (data: any) => data.id;
 
-  private gridApi: GridApi;
-
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.context = {
       componentParent: this
     };
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-
-
-    console.log(changes);
   }
 
   ngOnInit(): void {}
@@ -188,6 +174,8 @@ export class TimesheetTableComponent implements OnInit, OnChanges {
       this.submitSelectedActiveEntries.emit(activeEntries);
     }
   }
+
+  private openDialog(): void{}
 
   private createNewEmptyRow(): TimesheetEntry {
     return {
