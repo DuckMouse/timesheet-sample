@@ -18,7 +18,7 @@ export class TimesheetShellService {
 
   fetchTimesheetEntries(): void {
     this.httpClient
-      .get<TimesheetEntry[]>('./assets/fake-data/fake-timesheet-entries.json')
+      .get<TimesheetEntry[]>('/api/entries')
       .pipe(
         map((entries: TimesheetEntry[]) => {
           return entries.map(entry => ({
@@ -30,15 +30,13 @@ export class TimesheetShellService {
       .subscribe(entries => this.timeSheetEntriesSubject.next(entries));
   }
 
-  addNewEntries(entries: TimesheetEntry[]): Observable<boolean> {
+  addNewEntries(entries: TimesheetEntry[]): void {
     const newEntries = entries.map(entry => ({
       ...entry,
       state: EntryState.submitted
     }));
-    this.timeSheetEntriesSubject.next([
-      ...this.timeSheetEntriesSubject.value,
-      ...newEntries
-    ]);
-    return of(true);
+    this.httpClient
+      .post('/api/AddEntries', newEntries)
+      .subscribe(() => this.fetchTimesheetEntries());
   }
 }

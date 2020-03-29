@@ -14,13 +14,16 @@
     "timesheet-e2e": {
       "tags": []
     },
-    "timesheet-feature": {
+    "feature-timesheet": {
       "tags": []
     },
     "timesheet-data-access": {
       "tags": []
     },
     "timesheet-ui": {
+      "tags": []
+    },
+    "api": {
       "tags": []
     }
   }

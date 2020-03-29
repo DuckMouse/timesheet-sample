@@ -34,6 +34,8 @@ import { EntryActionNewComponent } from './../entry-action-new/entry-action-new.
 export class TimesheetTableComponent implements OnInit, OnChanges {
   @Input() timesheetEntries: TimesheetEntry[] = [];
   @Output() submitSelectedActiveEntries = new EventEmitter<TimesheetEntry[]>();
+
+  private gridApi: GridApi;
   context: any;
   frameworkComponents = {
     timeDurationComponent: TimeDurationComponent,
@@ -106,7 +108,7 @@ export class TimesheetTableComponent implements OnInit, OnChanges {
             return { component: 'entryActionNewComponent' };
           }
           default:
-            null;
+            return null;
         }
       }
     }
@@ -115,17 +117,15 @@ export class TimesheetTableComponent implements OnInit, OnChanges {
     return data.id;
   };
 
-  private gridApi: GridApi;
-
   constructor() {
     this.context = {
       componentParent: this
     };
   }
   ngOnChanges(changes: SimpleChanges): void {
-
-
-    console.log(changes);
+    if (this.gridApi) {
+      this.gridApi.refreshCells();
+    }
   }
 
   ngOnInit(): void {}
