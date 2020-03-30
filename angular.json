@@ -107,13 +107,15 @@
       }
     },
     "timesheet-e2e": {
-      "projectType": "application",
       "root": "apps/timesheet-e2e",
+      "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "protractorConfig": "apps/timesheet-e2e/protractor.conf.js",
+            "cypressConfig": "apps/timesheet-e2e/cypress.json",
+            "tsConfig": "apps/timesheet-e2e/tsconfig.e2e.json",
             "devServerTarget": "timesheet:serve"
           },
           "configurations": {
@@ -125,7 +127,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "apps/timesheet-e2e/tsconfig.json",
+            "tsConfig": "apps/timesheet-e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**"]
           }
         }

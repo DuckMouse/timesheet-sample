@@ -43,7 +43,7 @@ const columnDefs = [
   {
     headerName: 'Hourly Rate',
     field: 'hourlyRate',
-    cellRenderer: (params: any) => '$' + params.value.toFixed(2)
+    cellRenderer: (params: any) => '$' + parseInt(params.value,10).toFixed(2)
   },
   {
     headerName: 'Total',
@@ -58,6 +58,8 @@ const columnDefs = [
     headerName: 'Actions',
     field: 'actions',
     editable: false,
+    flex: 2,
+    minWidth: 200,
     cellRendererSelector: (params: any) => {
       switch (params.data.state) {
         case EntryState.active: {
