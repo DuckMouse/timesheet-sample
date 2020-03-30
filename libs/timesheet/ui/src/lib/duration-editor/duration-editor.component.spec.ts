@@ -8,9 +8,8 @@ describe('DurationEditorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DurationEditorComponent ]
-    })
-    .compileComponents();
+      declarations: [DurationEditorComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

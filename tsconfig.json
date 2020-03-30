@@ -22,7 +22,8 @@
       "@timesheet/data-access": ["libs/timesheet/data-access/src/index.ts"],
       "@timesheet/ui": ["libs/timesheet/ui/src/index.ts"],
       "@timesheet/utilities": ["libs/timesheet/utilities/index.ts"],
-      "@data": ["libs/data/src/index.ts"]
+      "@data": ["libs/data/src/index.ts"],
+      "core-js/es7/reflect": ["node_modules/core-js/proposals/reflect-metadata"]
     }
   },
   "angularCompilerOptions": {
