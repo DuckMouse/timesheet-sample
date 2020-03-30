@@ -14,7 +14,7 @@
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
     "affected:e2e": "nx affected:e2e",
-    "affected:test": "nx affected:test  --watch=false --browsers=ChromeHeadless",
+    "affected:test": "nx affected:test",
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
     "precommit": "npm run format && npm run affected:lint && npm run affected:test && npm run affected:build",
