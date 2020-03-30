@@ -1,3 +1,4 @@
-<button mat-raised-button (click)="executeAction(entryActions.save)">Save</button>
-<button mat-raised-button (click)="executeAction(entryActions.cancel)">Cancel</button>
-
+<button mat-raised-button [attr.data-testid]="'newSaveActionButton'"
+  (click)="executeAction(entryActions.save)">Save</button>
+<button mat-raised-button [attr.data-testid]="'newCancelActionButton'"
+  (click)="executeAction(entryActions.cancel)">Cancel</button>

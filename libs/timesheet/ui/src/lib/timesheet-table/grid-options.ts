@@ -58,6 +58,8 @@ const columnDefs = [
     headerName: 'Actions',
     field: 'actions',
     editable: false,
+    flex: 2,
+    minWidth: 200,
     cellRendererSelector: (params: any) => {
       switch (params.data.state) {
         case EntryState.active: {
