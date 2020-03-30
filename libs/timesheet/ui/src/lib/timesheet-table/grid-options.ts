@@ -43,7 +43,7 @@ const columnDefs = [
   {
     headerName: 'Hourly Rate',
     field: 'hourlyRate',
-    cellRenderer: (params: any) => '$' + params.value.toFixed(2)
+    cellRenderer: (params: any) => '$' + parseInt(params.value,10).toFixed(2)
   },
   {
     headerName: 'Total',
