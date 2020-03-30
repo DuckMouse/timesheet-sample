@@ -1,5 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  MatDialogModule,
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from '@angular/material/dialog';
+
 import { YesnomodalComponent } from './yesnomodal.component';
 
 describe('YesnomodalComponent', () => {
@@ -8,9 +15,13 @@ describe('YesnomodalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YesnomodalComponent ]
-    })
-    .compileComponents();
+      imports: [MatDialogModule],
+      declarations: [YesnomodalComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: { title: 'Test Title' } }
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +32,10 @@ describe('YesnomodalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain the title of the object passed in', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Test Title');
   });
 });

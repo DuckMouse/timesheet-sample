@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { TimesheetTableComponent } from './timesheet-table.component';
 
@@ -8,9 +9,9 @@ describe('TimesheetTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimesheetTableComponent ]
-    })
-    .compileComponents();
+      declarations: [TimesheetTableComponent],
+      imports: [MatDialogModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
