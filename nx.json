@@ -11,9 +11,6 @@
     "timesheet": {
       "tags": []
     },
-    "timesheet-e2e": {
-      "tags": []
-    },
     "feature-timesheet": {
       "tags": []
     },
@@ -27,6 +24,9 @@
       "tags": []
     },
     "data": {
+      "tags": []
+    },
+    "timesheet-e2e": {
       "tags": []
     }
   }
